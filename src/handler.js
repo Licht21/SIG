@@ -9,7 +9,7 @@ const client = new Client({
 await client.connect();
 
 const getDataPoint = async (request, h) => {
-  const res = await client.query("SELECT * FROM lokasi_ikonik");
+  const res = await client.query("SELECT nama_tempat, kategori, alamat, ST_AsGeoJSON(lokasi), deskripsi  FROM lokasi_ikonik");
 
   const response = h
     .response({
@@ -33,7 +33,7 @@ const getDataLine = async (request, h) => {
 };
 
 const getDataPolygon = async (request, h) => {
-  const res = await client.query("SELECT * FROM rumah_kos");
+  const res = await client.query("SELECT nama_kos, harga_sewa_tahunan, fasilitas, jumlah_kamar, ST_AsGeoJSON(lokasi), akses_24_jam, deskripsi FROM rumah_kos");
 
   const response = h
     .response({
