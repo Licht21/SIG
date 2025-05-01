@@ -10,6 +10,9 @@
   "keywords": [
     "sig"
   ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "author": "aulia",
   "license": "ISC",
   "dependencies": {
