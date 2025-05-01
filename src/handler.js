@@ -1,9 +1,10 @@
 import { Client } from "pg";
+import "dotenv/config";
 const client = new Client({
-  host: "35.240.168.56",
-  user: "postgres",
-  password: "supersecretpassword",
-  database: "qgis_db",
+  host: process.env.HOST,
+  user: process.env.USER,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE,
 });
 await client.connect();
 
