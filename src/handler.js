@@ -21,7 +21,10 @@ const getDataPoint = async (request, h) => {
 };
 
 const getDataLine = async (request, h) => {
-  const res = await client.query("SELECT * FROM jalur_kos_ke_lokasi_ikonik");
+  const res = await client.query(`SELECT rumah_kos.nama_kos, lokasi_ikonik.nama_tempat,  jalur_kos_ke_lokasi_ikonik.keterangan, ST_AsGeoJSON(jalur_kos_ke_lokasi_ikonik.jalur) AS jalur
+                                  FROM rumah_kos 
+                                  JOIN jalur_kos_ke_lokasi_ikonik ON rumah_kos.id = jalur_kos_ke_lokasi_ikonik.rumah_kos_id 
+                                  JOIN lokasi_ikonik ON lokasi_ikonik.id = jalur_kos_ke_lokasi_ikonik.lokasi_ikonik_id`);
 
   const response = h
     .response({
