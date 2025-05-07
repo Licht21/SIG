@@ -1,0 +1,213 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "SIG team Projects",
+    "version": "1.0",
+    "contact": {
+      "email": "yusuf210409@gmail.com",
+      "name": "Muhammad Yusuf Aulia"
+    }
+  },
+  "servers": [{ "url": "https://sig-930269745448.asia-southeast1.run.app" }],
+
+  "paths": {
+    "/point": {
+      "get": {
+        "summary": "Doing query to database to return point data to client",
+        "description": "return data point to client",
+        "operationId": "getDataPoint",
+        "responses": {
+          "200": {
+            "description": "data return successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "nama_tempat": {
+                        "type": "string",
+                        "example": "Gereja Katolik Stasi St. Yoseph, Dr Mansyur"
+                      },
+                      "kategori": {
+                        "type": "string",
+                        "example": "GEREJA"
+                      },
+                      "alamat": {
+                        "type": "string",
+                        "example": "Jl. Dr. Mansyur No.75, Padang Bulan Selayang I, Medan Selayang, Kota Medan, Sumatera Utara 20121"
+                      },
+                      "lokasi": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "example": "Point"
+                          },
+                          "coordinates": {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            },
+                            "example": [98.647586778, 3.567201815]
+                          }
+                        }
+                      },
+                      "deskripsi": {
+                        "type": "string",
+                        "example": "GEREJA"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/line": {
+      "get": {
+        "summary": "Doing query to database to return line data to client",
+        "description": "return data line to client",
+        "operationId": "getDataLine",
+        "responses": {
+          "200": {
+            "description": "Berhasil mengambil daftar jalur",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "nama_kos": {
+                        "type": "string",
+                        "example": "Kost JN Residence"
+                      },
+                      "nama_tempat": {
+                        "type": "string",
+                        "example": "RSU BUNDA THAMRIN"
+                      },
+                      "keterangan": {
+                        "type": "string",
+                        "nullable": true,
+                        "example": null
+                      },
+                      "jalur": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "example": "LineString"
+                          },
+                          "coordinates": {
+                            "type": "array",
+                            "items": {
+                              "type": "array",
+                              "items": {
+                                "type": "number"
+                              },
+                              "example": [98.649568496, 3.585368718]
+                            },
+                            "example": [
+                              [98.649568496, 3.585368718],
+                              [98.650666023, 3.585381666]
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/polygon": {
+      "get": {
+        "summary": "Doing query to database to return polygon data to client",
+        "description": "return data polygon to client",
+        "operationId": "getDataPolygon",
+        "responses": {
+          "200": {
+            "description": "Berhasil mengambil daftar kos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "nama_kos": {
+                        "type": "string",
+                        "example": "Kost Umsu Glugur Krakatau Medan Timur"
+                      },
+                      "harga_sewa_tahunan": {
+                        "type": "integer",
+                        "example": 6600000
+                      },
+                      "fasilitas": {
+                        "type": "object",
+                        "properties": {
+                          "wifi": {
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "AC": {
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "kamar_mandi_pribadi": {
+                            "type": "boolean",
+                            "example": false
+                          },
+                          "parkir": {
+                            "type": "boolean",
+                            "example": true
+                          }
+                        }
+                      },
+                      "jumlah_kamar": {
+                        "type": "integer",
+                        "nullable": true,
+                        "example": null
+                      },
+                      "lokasi": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "example": "Polygon"
+                          },
+                          "coordinates": {
+                            "type": "array",
+                            "items": {
+                              "type": "array",
+                              "items": {
+                                "type": "number"
+                              },
+                              "example": [98.676372646, 3.616244692]
+                            },
+                            "example": [
+                              [98.676372646, 3.616244692],
+                              [98.675785646, 3.612622892],
+                              [98.675396446, 3.612715567]
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
